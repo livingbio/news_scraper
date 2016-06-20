@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Website, Article, ArticleItem
 
-# Register your models here.
+admin.site.register(Website)
+admin.site.register(Article)
+
