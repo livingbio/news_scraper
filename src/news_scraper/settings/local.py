@@ -12,7 +12,9 @@ if "celery" in sys.argv[0]:
 
 # Django Debug Toolbar
 INSTALLED_APPS += (
-    'debug_toolbar.apps.DebugToolbarConfig',)
+    'debug_toolbar.apps.DebugToolbarConfig',
+    'dynamic_scrapper',
+    'scraper_app')
 
 # Show emails to console in DEBUG mode
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

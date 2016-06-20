@@ -25,7 +25,22 @@ pytest==2.8.3
 # https://pypi.python.org/pypi/pytest-cov
 pytest-cov==2.2.0
 
-
 # the modular source code checker: pep8, pyflakes and co
 # https://pypi.python.org/pypi/flake8/2.5.4
 flake8==2.5.4
+
+# Django Dynamic Scraper (DDS) is an app for Django build on
+# top of the scraping framework Scrapy. 
+# https://django-dynamic-scraper.readthedocs.io/en/latest/
+django-dynamic-scraper==0.11.0
+
+# Scrapy extension to write scraped items using Django models
+# https://github.com/scrapy-plugins/scrapy-djangoitem
+scrapy-djangoitem==1.1.1
+
+# Scrapy is an application framework for crawling web sites
+# and extracting structured data which can be used for a wide
+# range of useful applications.
+# http://doc.scrapy.org/en/1.1/
+Scrapy==1.1.0
+
