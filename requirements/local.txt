@@ -29,11 +29,6 @@ pytest-cov==2.2.0
 # https://pypi.python.org/pypi/flake8/2.5.4
 flake8==2.5.4
 
-# Django Dynamic Scraper (DDS) is an app for Django build on
-# top of the scraping framework Scrapy. 
-# https://django-dynamic-scraper.readthedocs.io/en/latest/
-django-dynamic-scraper==0.11.0
-
 # Scrapy extension to write scraped items using Django models
 # https://github.com/scrapy-plugins/scrapy-djangoitem
 scrapy-djangoitem==1.1.1
@@ -47,3 +42,8 @@ Scrapy==1.1.0
 # Turn HTML into equivalent Markdown-structured text.
 # https://pypi.python.org/pypi/html2text
 html2text==2016.5.29
+
+# Lightweight SOAP client
+# https://pypi.python.org/pypi/suds
+suds==0.4
+
