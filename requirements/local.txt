@@ -47,3 +47,6 @@ html2text==2016.5.29
 # https://pypi.python.org/pypi/suds
 suds==0.4
 
+# Chinese Words Segementation Utilities
+# https://pypi.python.org/pypi/jieba/
+jieba==0.38
