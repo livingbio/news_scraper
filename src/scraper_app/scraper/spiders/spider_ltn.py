@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
 from scrapy import Spider, Request
-from scraper_app.models import Article, ArticleItem
+from scraper_app.models import ArticleItem
 from datetime import date, timedelta
+import json
 
 
 class LTN_Spider(Spider):
 
     name = 'news.ltn.com.tw'
     allowed_domains = ['news.ltn.com.tw']
+    start_day = date(2014, 10, 1)
+    types = ['focus']  # , 'politics', 'society'
 
     def url_type_date(self, typ, dat):
         return 'http://{}/newspaper/{}/{}'. \
@@ -18,13 +21,12 @@ class LTN_Spider(Spider):
 
     def start_requests(self):
         one_day = timedelta(days=1)
-        start_day = date(2014, 10, 1)
-        types = ['focus', 'politics', 'society']
+        d = self.start_day
         while True:
-            for typ in types:
-                yield Request(self.url_type_date(typ, start_day), self.parse)
-            start_day = start_day + one_day
-            if start_day >= date.today():
+            for t in self.types:
+                yield Request(self.url_type_date(t, d), self.parse)
+            d = d + one_day
+            if d >= date.today():
                 break
 
     def parse(self, response):
@@ -40,7 +42,13 @@ class LTN_Spider(Spider):
         text = []
         for paragraph in response.xpath('//div[@id="newstext"]/p/text()').extract():
             text.append(paragraph)
+        text = u'\n\n'.join(text)
+        keywords = response.xpath('//div[@class="con_keyword boxTitle"]/a/text()').extract()
+        title = response.xpath('//h1/text()').extract_first()
 
-        keywords = []
-        for kw in response.xpath('//div[@class="con_keyword boxTitle"]/a/text()').extract():
-            keywords.append(keywords)
+        item = ArticleItem()
+        item['title'] = title
+        item['text'] = text
+        item['url'] = response.url
+        item['keyword'] = u','.join(keywords)
+        item.save()
