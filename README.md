@@ -1,41 +1,16 @@
 [![Build Status](https://travis-ci.org/livingbio/django-template.svg?branch=master)](https://travis-ci.org/livingbio/django-template)
 
-# Django Template for GliaCloud
+# Evaluation of Chinese Segmenters
 
-This is a django template for gliacloud
-
-## INSTALLATION & SETTINGS
-
-### Install Django
-
-To install django, type the following command
-
-    sudo pip install django
-
-### Create Django project from the template
-
-To create the project, run the following command and please replace your_project_name to what you like :
-
-    django-admin.py startproject --template=https://github.com/livingbio/django-template/archive/master.zip --extension=py,md,yml,ini your_project_name
+Evaluate four Chinese segmenters: [jieba](https://github.com/fxsjy/jieba), jieba with pre-defined dictionary, 大師's dictionary-based segmenter, [Stanford segmenter](http://nlp.stanford.edu/software/segmenter.shtml).
 
 ### Setting Virtualenv
 
 At first, you should make sure you have [virtualenv](http://www.virtualenv.org/) installed.
 
-after that, just cd to your_project_name:
-
-    cd your_project_name
-
-Then create your virtualenv:
-
+    cd news_scraper
     virtualenv venv
-
-Second, you need to enable the virtualenv by
-
     source venv/bin/activate
-
-Install all dependencies:
-
     pip install -r requirements.txt
 
 ### Setting up local environment variables
@@ -60,15 +35,16 @@ And run migrate and http server:
     python manage.py migrate
     python manage.py runserver
 
-### Documentation
 
-You can use [mkdocs](http://www.mkdocs.org/) to write beatuiful documentations. By typing:
+### Scrape news for evaluation
 
-    mkdocs serve
+It takes about 10 minutes to scrape news from LTN news.
 
-Then you can see your document in http://localhost:8001/
+    cd src
+    scrapy crawl news.ltn.com.tw
 
-### Detailed instructions
 
-Take a look at the docs for more information.
+### Evaluate segmenters
+
+    python manage.py eval_segmenter
 
