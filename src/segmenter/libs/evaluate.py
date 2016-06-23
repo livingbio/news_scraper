@@ -1,5 +1,5 @@
-from eval_segmenter.libs.conv2cn import Conv2Cn
-from eval_segmenter.libs.cwsegment import CWSegmenter
+from segmenter.libs.conv2cn import Conv2Cn
+from segmenter.libs.cwsegment import CWSegmenter
 from suds.client import Client
 from jieba import Tokenizer
 import os
@@ -62,7 +62,10 @@ class EvaluateStanford(object):
 
     def test(self, text, keywords):
         text = self.conv(text)
-        seg_text = self.seg(text).split()
+        seg_text = self.seg(text)
+        if not seg_text:
+            return 0.0
+        seg_text = seg_text.split()
         total = 0
         correct = 0
         for kw in keywords:

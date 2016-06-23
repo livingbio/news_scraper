@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import SegmenterEvaluateResult
+from segmenter.models import SegmenterEvaluateResult
 
 admin.site.register(SegmenterEvaluateResult)

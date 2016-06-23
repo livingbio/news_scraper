@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from scraper_app.models import Article
-from ...models import SegmenterEvaluateResult
-from ...libs.segmenter import EvaluateJieba, EvaluateMix, EvaluateMaster, EvaluateStanford
+from segmenter.models import SegmenterEvaluateResult
+from segmenter.libs.evaluate import EvaluateJieba, EvaluateMix, EvaluateMaster, EvaluateStanford
 
 
 class Command(BaseCommand):

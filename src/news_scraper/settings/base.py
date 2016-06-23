@@ -77,7 +77,7 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'scraper_app',
-    'eval_segmenter',
+    'segmenter',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

@@ -4,7 +4,7 @@ import re
 
 class Conv2Cn(object):
     def __init__(self):
-        from .conv2cn_data import trad, simp, phrase_table
+        from segmenter.libs.conv2cn_data import trad, simp, phrase_table
         self.one_char = dict((ord(t), ord(s)) for t, s in zip(trad, simp))
 
         num_char = max([len(trad) for trad, simp in phrase_table])
